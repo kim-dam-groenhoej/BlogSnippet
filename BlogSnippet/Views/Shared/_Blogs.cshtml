@@ -1,0 +1,27 @@
+﻿@using BlogSnippet.Models;
+
+@if (ViewBag.Blogs != null)
+{
+    <section class="blogs">
+        <h2>Blogs</h2>
+
+        @foreach (var blogpost in (List<BlogPost>)ViewData["Blogs"])
+        {
+            <div class="blog">
+                <h3>@blogpost.Title</h3>
+                <span>@blogpost.Created</span>
+
+                @if (!string.IsNullOrWhiteSpace(blogpost.Image))
+                {
+                    <div class="image">
+                        <img src="@blogpost.Image" alt="@blogpost.Title" />
+                    </div>
+                }
+
+                <div class="content">
+                    @blogpost.Content
+                </div>
+            </div>
+        }
+    </section>
+}
