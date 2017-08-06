@@ -1,6 +1,7 @@
 ﻿using BlogSnippet.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -26,6 +27,20 @@ namespace BlogSnippet.Controllers
         [HttpPost]
         public ActionResult CreateBlogPost(BlogPost model)
         {
+            // Verify that the user selected a file
+            if (model.ImageFile != null && model.ImageFile.ContentLength > 0)
+            {
+                var fileType = Path.GetExtension(model.ImageFile.FileName);
+                var fileName = Guid.NewGuid().ToString() + fileType;
+
+                // store the file inside ~/Images/Uploads folder
+                var path = Path.Combine(Server.MapPath("~/Images/Uploads"), fileName);
+                model.ImageFile.SaveAs(path);
+
+                // Save web url
+                model.Image = Url.Content(string.Format("~/Images/Uploads/{0}", fileName));
+            }
+
             using (var context = new BlogContext())
             {
                 model.Created = DateTime.Now;
@@ -33,7 +48,9 @@ namespace BlogSnippet.Controllers
                 context.SaveChanges();
             }
 
-            return View();
+            TempData["success"] = true;
+
+            return RedirectToAction("CreateBlogPost");
         }
     }
 }

@@ -32,12 +32,12 @@
         </div>
 
         <div class="form-group">
-            <label for="image" class="control-label col-md-2">Billede</label>
+            <label for="ImageFile" class="control-label col-md-2">Billede</label>
             @*@Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
 
-                <input type="file" name="image" id="image" class="form-control" />
-                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                <input type="file" name="ImageFile" id="ImageFile" class="form-control" />
+                @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -46,6 +46,13 @@
                 <input type="submit" value="Opret blogpost" class="btn btn-default" />
             </div>
         </div>
+
+        @if (TempData["success"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                <strong>Success!</strong> Blog post inserted
+            </div>
+        }
     </div>
 }
 

@@ -7,14 +7,17 @@
 
         @foreach (var blogpost in (List<BlogPost>)ViewData["Blogs"])
         {
-            <div class="blog col-12">
+            <div class="blog col-xs-12 clearfix">
                 <h3>@blogpost.Title</h3>
-                <span>@blogpost.Created</span>
+                <span class="date">
+                    <strong>Dato</strong><span>@blogpost.Created</span>
+                </span>
+                
 
                 @if (!string.IsNullOrWhiteSpace(blogpost.Image))
                 {
-                    <div class="image">
-                        <img src="@blogpost.Image" alt="@blogpost.Title" />
+                    <div class="image pull-right col-xs-4">
+                        <img src="@blogpost.Image" class="col-xs-12" alt="@blogpost.Title" />
                     </div>
                 }
 
@@ -22,7 +25,7 @@
                     @Html.Raw(blogpost.Content)
                 </div>
             </div>
-            <br />
+          
         }
     </section>
 }

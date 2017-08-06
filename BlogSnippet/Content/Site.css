@@ -19,3 +19,19 @@ select,
 textarea {
   max-width: 280px; }
 
+.blogs .blog {
+  margin: 0 0 20px 0;
+  background: #ddd;
+  padding: 10px; }
+  .blogs .blog h3 {
+    margin-top: 0; }
+  .blogs .blog .image {
+    padding: 0; }
+    .blogs .blog .image img {
+      padding: 0 0 10px 10px;
+      margin: 0; }
+  .blogs .blog .date {
+    display: block; }
+    .blogs .blog .date strong {
+      margin-right: 10px; }
+
