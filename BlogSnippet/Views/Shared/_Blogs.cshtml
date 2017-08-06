@@ -7,7 +7,7 @@
 
         @foreach (var blogpost in (List<BlogPost>)ViewData["Blogs"])
         {
-            <div class="blog">
+            <div class="blog col-12">
                 <h3>@blogpost.Title</h3>
                 <span>@blogpost.Created</span>
 
@@ -19,9 +19,10 @@
                 }
 
                 <div class="content">
-                    @blogpost.Content
+                    @Html.Raw(blogpost.Content)
                 </div>
             </div>
+            <br />
         }
     </section>
 }

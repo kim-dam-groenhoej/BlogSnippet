@@ -9,11 +9,13 @@
 </div>
 
 <div class="row">
-    @Html.Partial("_Blogs",
-    new ViewDataDictionary()
-    {
-        { "Blogs", ViewBag.Blogs }
-    })
+    <div class="col-md-12">
+        @Html.Partial("_Blogs",
+        new ViewDataDictionary()
+        {
+            { "Blogs", ViewBag.Blogs }
+        })
+    </div>
 </div>
 
 <div class="row">

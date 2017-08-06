@@ -25,7 +25,12 @@ namespace BlogSnippet
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/font-awesome.min.css",
+                      "~/Scripts/summernote/summernote.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/summernote").Include(
+                      "~/Scripts/summernote/summernote.min.js"));
         }
     }
 }

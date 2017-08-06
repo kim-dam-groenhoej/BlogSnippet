@@ -12,7 +12,7 @@ namespace BlogSnippet.Controllers
         public ActionResult Index()
         {
             var context = new BlogContext();
-            ViewBag.Blogs = context.BlogPosts.ToList();          
+            ViewBag.Blogs = context.BlogPosts.ToList();
 
             return View();
         }
@@ -24,10 +24,11 @@ namespace BlogSnippet.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateBlog(BlogPost model)
+        public ActionResult CreateBlogPost(BlogPost model)
         {
             using (var context = new BlogContext())
             {
+                model.Created = DateTime.Now;
                 context.BlogPosts.Add(model);
                 context.SaveChanges();
             }

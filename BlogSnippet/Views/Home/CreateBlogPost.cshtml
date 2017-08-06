@@ -6,10 +6,10 @@
 <h2>@ViewBag.Title</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("CreateBlogPost", "Home", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Blog post</h4>
         <hr />
@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Content, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Content, 10,0, new { @class = "form-control" })
+                @Html.TextAreaFor(model => model.Content, 10, 0, new { @class = "form-control" })
 
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
             </div>
@@ -55,4 +55,16 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/summernote")
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#Content').summernote({
+                height: 300,                 // set editor height
+                minHeight: null,             // set minimum height of editor
+                maxHeight: null,             // set maximum height of editor
+                focus: true                  // set focus to editable area after initializing summernote
+            });
+        });
+    </script>
 }

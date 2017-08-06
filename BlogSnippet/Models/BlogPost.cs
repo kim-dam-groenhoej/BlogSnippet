@@ -4,6 +4,7 @@ using System.Linq;
 using System.Data.Entity;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace BlogSnippet.Models
 {
@@ -18,6 +19,7 @@ namespace BlogSnippet.Models
 
         [Required]
         [Display(Name = "Indhold", ResourceType = typeof(Ressources.Resource1))]
+        [AllowHtml]
         public string Content { get; set; }
 
         [Required]
