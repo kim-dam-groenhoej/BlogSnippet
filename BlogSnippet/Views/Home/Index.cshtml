@@ -1,4 +1,5 @@
-﻿@{
+﻿@model BlogSnippet.ViewModels.HomeVM
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -13,7 +14,7 @@
         @Html.Partial("_Blogs",
         new ViewDataDictionary()
         {
-            { "Blogs", ViewBag.Blogs }
+            { "Blogs", Model.Blogs }
         })
     </div>
 </div>

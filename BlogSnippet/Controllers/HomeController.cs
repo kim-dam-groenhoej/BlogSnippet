@@ -1,4 +1,5 @@
 ﻿using BlogSnippet.Models;
+using BlogSnippet.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,12 +11,21 @@ namespace BlogSnippet.Controllers
 {
     public class HomeController : Controller
     {
+        private BlogContext db;
+
+        public HomeController()
+        {
+            db = new BlogContext();
+        }
+
         public ActionResult Index()
         {
             var context = new BlogContext();
-            ViewBag.Blogs = context.BlogPosts.ToList();
 
-            return View();
+            var homeVM = new HomeVM();
+            homeVM.Blogs = context.BlogPosts.ToList();
+
+            return View(homeVM);
         }
         
         public ActionResult CreateBlogPost()
@@ -49,7 +59,7 @@ namespace BlogSnippet.Controllers
             }
 
             TempData["success"] = true;
-
+            
             return RedirectToAction("CreateBlogPost");
         }
     }
